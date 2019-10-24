@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJS hello world</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-if="isGreet">Hello, World!</p>
+		<p v-if="isNight">Good night!</p>
+		<p v-if="isMorning">Good morning!</p>
+		<p v-if="isAfternoon">Good afternoon!</p>
+		<p v-if="isEvening">Good evening!</p>
+	</div>
+</body>
+<script>
+	var hours = new Date().getHours();
+	new Vue({
+		el: '#app',
+		data: {
+			isGreet: true,
+			isNight: hours < 4,
+			isMorning: hours >= 4 && hours < 12,
+			isAfternoon: hours >= 12 && hours < 18,
+			isEvening: hours >= 18
+		},
+		created() {
+			console.log('Hello, World. running from created()');
+		}
+	});
+</script>
+</html>
